@@ -2,6 +2,20 @@ import discord
 from discord.ext import commands
 import random
 import os
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
+def run():
+    app.run(host='0.0.0.0', port=8000)
+
+Thread(target=run).start()
+
 
 print("✅ ファイルは実行された！")
 
@@ -281,3 +295,4 @@ try:
     bot.run(os.environ['TOKEN'])
 except Exception as e:
     print("❌ 起動時エラー：", e)
+
